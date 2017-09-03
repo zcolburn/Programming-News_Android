@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.sqlitesample.MainActivity" >
+
+    <item
+        android:id="@+id/settingsBackButton"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        android:orderInCategory="100"
+        android:title="@string/back"
+        app:showAsAction="always"/>
+
+</menu>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.zacharycolburn.programmingnews">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- permission required to use Alarm Manager -->
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- Register the Alarm Receiver -->
+    <receiver android:name="com.example.alarmmanagernotifcation.ReadReminderReceiver"/>
+
+    <!-- Permission to start Alarm on device reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <receiver
+                android:name=".MainActivity$FeedFetcherReceiver"
+                android:enabled="true"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="com.example.zacharycolburn.programmingnews.UPDATE_UI_FILTER" />
+                    <!-- <action android:name="${applicationId}.SOME_ACTION" /> -->
+                </intent-filter>
+            </receiver>
+            <receiver
+                android:name=".MainActivity$FinishedRefresh"
+                android:enabled="true"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="com.example.zacharycolburn.programmingnews.END_REFRESH_ANIMATION" />
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                    <!-- <action android:name="${applicationId}.SOME_ACTION" /> -->
+                </intent-filter>
+            </receiver>
+        </activity>
+
+        <service
+            android:name=".FeedFetcher"
+            android:exported="false" />
+
+        <activity
+            android:name=".ArticleViewer"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".PreferenceActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".FavoritesActivity"
+            android:label="@string/title_activity_favorites" />
+        <receiver
+            android:name=".ReadReminderReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.zacharycolburn.programmingnews.READ_REMINDER" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".NotificationIntentService"
+            android:enabled="true"
+            android:exported="false" />
+
+
+        <receiver android:name=".NotificationServiceStarterReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

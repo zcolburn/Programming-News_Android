@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.sqlitesample.MainActivity" >
+
+    <item
+        android:id="@+id/favorites"
+        android:icon="@drawable/ic_favorite_red_24dp"
+        android:orderInCategory="100"
+        android:title="@string/settings"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/refresh_records"
+        android:icon="@drawable/ic_sync_white_24dp"
+        android:orderInCategory="200"
+        android:title="@string/refresh_records"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="300"
+        android:title="@string/settings"
+        app:showAsAction="always"/>
+
+</menu>
